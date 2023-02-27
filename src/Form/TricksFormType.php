@@ -26,11 +26,9 @@ class TricksFormType extends AbstractType
                 'class'=> Categories::class,
                 'choice_label' => 'name', 
                 'label' => 'Catégories',
-                'group_by' => 'parent.name',
                 'query_builder' => function(CategoriesRepository $cr)
                 {
                     return $cr->createQueryBuilder('c')
-                    ->where('c.parent IS NOT NULL')
                     ->orderBy('c.name', 'ASC');
                 }
             ])

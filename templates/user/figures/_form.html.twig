@@ -6,12 +6,12 @@
     {{ form_row(form.description) }}
     {{ form_row(form.categories) }}
         {# On affiche les images si on est en édition #}
-    {% if app.request.attributes.get('_route') == 'tricks_edit' %}
+    {% if app.request.attributes.get('_route') == 'figures_edit' %}
         <h2>Images</h2>
-        {% for image in product.images %}
+        {% for image in trick.images %}
             <div>
-                <img src="{{ asset('assets/uploads/figures/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
-                <a href="{{ path('tricks_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                <img src="{{ asset('assets/uploads/tricks/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+                <a href="{{ path('figures_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
             </div>
         {% endfor %}
     {% endif %}

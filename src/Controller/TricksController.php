@@ -17,9 +17,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/figures', name: 'figures_')]
 class TricksController extends AbstractController
 {
-
-
-
     #[Route('/ajout', name: 'add')]
     public function add(
         Request $request, 
@@ -110,7 +107,7 @@ class TricksController extends AbstractController
             $em->flush();
 
             //message succes
-            $this->addFlash('success', 'Produit modifié avec succès');
+            $this->addFlash('success', 'Figure modifiée avec succès');
             //redirection
             return $this->redirectToRoute('app_main');
         }
