@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+{% block stylesheets %}
+    
+{% endblock %}
+
+{% block body %}
+<main class="container">
+    <section class="row">
+        <div class="padd100top col-12">
+            <h1>SnowTricks</h1>
+            <h2>Bienvenue sur la plateforme de snowboard</h2>
+            <h5>L'objectif est de recueillir toutes les infos sur les figures de snowboard</h5>
+        </div>
+        {% for category in categories %}
+            {% if category.parent == null %}
+                <div class="col-12">
+                    {{ category.name }}
+                </div>
+            {% else %}
+                <div class="col-3">
+                    <a href="{{ path('categories_list', {slug: category.slug} )}}">{{ category.name}}</a>
+                </div>
+
+            {% endif %}
+            
+        {% endfor %}
+
+
+       
+    </section>
+    <section class="row">
+
+        <div>
+            {% for trick in tricks %}
+
+            <h4>{{trick.name}}</h4>
+
+            {% endfor %}
+
+
+        </div>
+    
+    
+    </section>
+</main>       
+{% endblock %}

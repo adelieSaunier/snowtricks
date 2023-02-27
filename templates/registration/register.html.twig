@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de compte{% endblock %}
+
+{% block body %}
+<section class="container">
+    <div class="row padd100top">
+        <div class="col">
+
+            <h1>Se créer un compte</h1>
+
+            {{ form_start(registrationForm) }}
+                <fieldset class="my-3">
+                    <legend>Mon identité</legend>
+                    {{ form_row(registrationForm.nickname) }}
+                </fieldset>
+
+                <fieldset class="my-3">
+                    <legend>Mes identifiants</legend>
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                </fieldset>
+
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn btn-primary my-3">S'inscrire</button>
+                <a href="{{ path('app_login') }}" class="btn btn-secondary my-3">Me connecter</a>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</section>
+{% endblock %}

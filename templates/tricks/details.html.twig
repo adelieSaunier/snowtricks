@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ trick.name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <section class="row padd100top"> 
+            
+            <h1>{{ trick.name }}</h1>
+            <div class="col-6"> 
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        {%  for iteration in 1..trick.images|length %}
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ iteration - 1 }}" {{ (loop.first == 0) ? 'class="active" aria-current="true"' : '' }} aria-label="Slide {{ iteration }}"></button>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {%  for image in trick.images %}
+                            <div class="carousel-item {{ (loop.first == 0) ? 'active' : '' }}">
+                                <img src="{{ asset('assets/uploads/tricks/') ~ image.name }}" class="d-block w-100" alt="{{ trick.name }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Précédent</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Suivant</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-6">
+                <p>{{ trick.description }}</p>
+            </div>
+            <div class="col-6">
+                <ul>
+                    <li>{{ trick.categories.name }}</li>
+                </ul>
+            </div> 
+        
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+            <!-- Container wrapper -->
+            <div class="container">
+                <!-- Toggle button -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent1"
+                    aria-controls="navbarSupportedContent1"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                ><i class="fas fa-bars"></i></button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="{{path('app_main')}}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Nous contacter</a>
+                        </li>
+                    </ul>
+                    <!-- /Left links -->
+
+                    <!-- Right elements -->
+                    <div class="d-flex align-items-center">
+                        
+                        {% if app.user %}
+                            <a class="btn btn-primary" href="#"></i>Mon compte</a>
+                            <a class="btn btn-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
+
+                            {% else %}
+                                <a class="btn btn-primary" href="{{ path('app_register') }}"></i>M'inscrire</a>
+                                <a class="btn btn-primary" href="{{ path('app_login') }}"></i>Se connecter</a>
+                        {% endif %}
+                    </div>
+                    <!-- /Right elements -->
+                </div>
+                <!-- /Collapsible wrapper -->
+            </div>
+            <!-- /Container wrapper -->
+        </nav>

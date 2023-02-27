@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition d'une figure{% endblock %}
+
+{% block body %}
+
+
+    <main class="container">
+        <section class="row">
+            <div class="padd100top col-12">
+                <h1>Modifier la figure</h1>
+                {% include "user/figures/_form.html.twig" with {'button_label' : 'Modifier la figure'} %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

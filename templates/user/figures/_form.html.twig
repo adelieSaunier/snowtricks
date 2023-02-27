@@ -1,0 +1,20 @@
+<!-- Avec ce fichier, je gère l'ajout et l'édition d'un produit
+ (include dans chaque template) -->
+
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.categories) }}
+        {# On affiche les images si on est en édition #}
+    {% if app.request.attributes.get('_route') == 'tricks_edit' %}
+        <h2>Images</h2>
+        {% for image in product.images %}
+            <div>
+                <img src="{{ asset('assets/uploads/figures/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+                <a href="{{ path('tricks_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {{ form_row(form.images) }}
+    <button type="submit" class="btn btn-primary">{{ button_label | default('Enregistrer la figure') }}</button>
+{{ form_end(form) }}

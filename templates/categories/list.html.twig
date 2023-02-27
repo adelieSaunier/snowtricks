@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des figures de la catégorie {{ category.name }}{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12 padd100top">
+                <h1>Figures : {{ category.name }}</h1>
+            </div>
+        
+            
+            {% for trick in tricks.data %}
+                <div class="col-3 mt-2 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <p>{{ trick.name }}</p>
+                            </div>
+                            <div class="card-text">
+                                <p>{{ trick.description }}</p>
+                            </div>
+                            <a href="{{ path('figures_details', { slug:trick.slug } ) }}" class="btn btn-primary">Voir les détails</a>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+            {% set path = 'categories_list' %}
+            {% set slug = category.slug %}
+            {% set pages = tricks.pages %}
+            {% set currentPage = tricks.page %}
+
+            {% include "_partials/_pagination.html.twig" %}
+           
+        </section>
+    </main>
+{% endblock %}

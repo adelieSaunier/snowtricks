@@ -1,0 +1,5 @@
+<h1>Activez votre compte chez SnowTricks</h1>
+<p>Bonjour {{ user.nickname }}</p>
+<p>Votre inscription sur notre site est à valider sur le lien ci dessous</p>
+<a href="{{ absolute_url(path('verify_user', {token: token})) }}">Lien</a>
+<p>Ce lien expirera dans 3 heures</p>
